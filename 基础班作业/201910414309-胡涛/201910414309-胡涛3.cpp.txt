@@ -1,0 +1,138 @@
+//The frist problem
+
+#include<stdio.h>
+#include<stdlib.h>
+#define _CRT_SECURE_NO_WARNINGSD
+
+typedef struct Student
+{
+	char name[15];
+	char stu_id[15];
+	int age;
+	char sex[5];
+	struct Student* next;
+}student;
+
+student* find_id(char id[], student stus[], int num)
+{
+	student* p;
+	int temp=0;
+	p = stus;
+	for (temp = 0; temp < num; temp++)
+	{
+		if (p->stu_id == id)
+		{
+			return p;
+		}
+		else
+		{
+			p = p->next;
+		}
+	}
+	return NULL;
+
+}
+
+
+//The second problem
+#include<stdio.h>
+#include<stdlib.h>
+#define _CRT_SECURE_NO_WARNINGSD
+
+typedef struct Student
+{
+	char name[15];
+	char stu_id[15];
+	int age;
+	char sex[5];
+	struct Student* next;
+}student;
+int func(student *p)
+{
+	student* q, * head;
+	int temp=1;
+	if (p == NULL)
+	{
+		printf("链表为空！请建立一个链表：");
+		head = (student*)malloc(sizeof(student));
+		q = (student*)malloc(sizeof(student));
+		p = head;
+		while (temp)
+		{
+			printf("请输入名字：");
+			scanf("%s", p->name);
+			printf("年龄：");
+			scanf("%d", &p->age);
+			printf("请输入性别：");
+			scanf("%s", p->sex);
+			printf("学号：");
+			scanf("%s", p->stu_id);
+			p->next = q;
+			p = q;
+			q = (student*)malloc(sizeof(student));
+			printf("是否继续？----1（是） or 0（否）");
+			scanf("%d", &temp);
+		}
+		p = NULL;
+		return head;
+	}
+	else
+	{
+		while (p != NULL)
+		{
+			printf("%s", p->name);
+			printf("%d", p->age);
+			printf("%s", p->sex);
+			printf("%s", p->stu_id);
+			p = p->next;
+		}
+		printf("是否添加？-----1(是) or 0（否）");
+		scanf("%d", &temp);
+		while (temp)
+		{
+			q = (student*)malloc(sizeof(student));
+			p->next = q;
+			p = q;
+			printf("请输入名字：");
+			scanf("%s", p->name);
+			printf("年龄：");
+			scanf("%d", &p->age);
+			printf("请输入性别：");
+			scanf("%s", p->sex);
+			printf("学号：");
+			scanf("%s", p->stu_id);
+			printf("是否继续？----1（是） or 0（否）");
+			scanf("%d", &temp);
+		}
+		p->next = NULL;
+		return p;
+
+	}
+}
+//The thrid problem
+#include<stdio.h>
+#include<stdlib.h>
+#define _CRT_SECURE_NO_WARNINGSD
+struct ListNode
+{
+	int val;
+	struct ListNode* next;
+};
+struct ListNode* reverseList(struct LiseNode* head)
+{
+	struct ListNode* p,*q,*r;
+	p = head;
+	q = p->next;
+	p->next = NULL;
+	r = q->next;
+	q->next = p;
+	while (r->next != NULL)
+	{
+		p = r;
+		p->next = q;
+		q = r->next;
+		r = q->next;
+		q->next = p;
+	}
+	return r;
+}
