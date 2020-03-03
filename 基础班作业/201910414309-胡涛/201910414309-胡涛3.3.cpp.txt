@@ -1,0 +1,122 @@
+//Thrid
+#define _CRT_SECURE_NO_WARNINGSD
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	int i, a, b;
+	scanf_s("%d %d", &a, &b);
+	if (b != 0)
+	{
+		if (a >= b)
+		{
+			for (i = 1; i <=b; i++)
+			{
+				if (a % i == 0 && b % i == 0)
+				{
+					a /= i;
+					b /= i;
+				}
+			}
+			printf("%d/%d", a, b);
+		}
+		else
+		{
+			for (i = 1; i <=a; i++)
+			{
+				if (a % i == 0 && b % i == 0)
+				{
+					a /= i;
+					b /= i;
+				}
+			}
+			printf("%d/%d", a, b);
+		}
+	}
+	else
+	{
+		printf("NONE");
+	}
+}
+
+
+
+
+
+//The last
+#define _CRT_SECURE_NO_WARNINGSD
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct List
+{
+	int data;
+	struct List* next;
+}list;
+int main()
+{
+	list* head1,*head2, * p1,*p2, * q1,*q2;
+	head1 = (list*)malloc(sizeof(list));
+	head2 = (list*)malloc(sizeof(list));
+	p1 = head1;
+	p2 = head2;
+	int i, j, m, n, temp1=0,temp2=0;
+	int M=0, N=0;
+	scanf("%d %d",&m, &n);
+	for (i = 1; i < m; i++)
+	{
+		if (m % i == 0)
+		{
+			M += 1;
+			p1->data = i;
+			q1 = (list*)malloc(sizeof(list));
+			p1->next = q1;
+			p1 = q1;
+			temp1 += i;
+		}
+	}
+	p1 = NULL;
+	for (j = 1; j < n; j++)
+	{
+		if (n % j == 0)
+		{
+			N += 1;
+			p2->data = j;
+			q2 = (list*)malloc(sizeof(list));
+			p2->next = q2;
+			p2 = q2;
+			temp2 += j;
+		}
+	}
+	p2 = NULL;
+	printf("%d,", m);
+	for (i = 0; i < M; i++)
+	{
+		printf("%d", head1->data);
+		head1 = head1->next;
+		if (M - i != 1)
+		{
+			printf("+");
+		}
+	}
+	printf("=%d\n", temp1);
+	printf("%d,",n);
+	for (j = 0; j < N; j++)
+	{
+		printf("%d", head2->data);
+		head2=head2->next;
+		if (N - j != 1)
+		{
+			printf("+");
+		}
+	}
+	printf("=%d\n", temp2);
+	if (temp1 == n && temp2 == m)
+	{
+		printf("1");
+	}
+	else
+	{
+		printf("0");
+	}
+
+}
