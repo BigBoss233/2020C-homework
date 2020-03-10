@@ -1,0 +1,113 @@
+****First****
+因为多种整型可以适合不同长度的类型，可以省内存
+****Second****
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	short a = 80;
+	unsigned  int b = 42110;
+	long long int c = 3000000000;
+}
+****Third****
+c++并没有提供自动防止超出整型范围的措施，但可以使用climits头文件来确定限制情况；
+Fourth
+33l和33值是相等的，只是33l是long int 型，而33是int 型。前者为4字节，后者可能为2字节或4字节，由编译器的不同而不同。
+****Fifth****
+不等价,一个输出负号一个输出A
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	char grade = 45;
+	char grade1 = 'A';
+	cout << grade << grade1;
+}
+****Sixth****
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	char a = 88;
+	int b = 88;
+	cout << a << endl;
+	printf("%c", b);
+}
+****Seventh****
+不会造成，应为long 为4字节，long long为8字节，double为8字节。
+****Eighth****
+答：a:91,b:15,c:0,d:1.5075,e:3.
+****Ninth****
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	double x1=25.5, x2=35.1;
+	int a;
+	a = x1 + x2;
+	cout << a;
+}
+****Tenth****
+a:int,b:float,c:char ascii,d:char unicode,e:float.
+****Eleven****
+1、
+#include<iostream>
+using namespace std;
+int main()
+{
+	double a, b;
+	cin >> a;
+	b = 1/1.2* a;
+	cout << b<<"in";
+}
+2、
+#include<iostream>
+using namespace std;
+int main()
+{
+	double in, inch,meter,kilogram,pound,BMI;
+	cout << "几英尺:";
+	cin >> in;
+	cout << "几英寸：";
+	cin >> inch;
+	cout << "多少磅：";
+	cin >> pound;
+	meter = 0.0254 * (inch + in * 12);
+	kilogram = (1 / 2.2) * pound;
+	BMI = meter / (kilogram * kilogram);
+	cout << BMI;
+}
+4、
+#include<iostream>
+using namespace std;
+int main()
+{
+	long long int day, minute, hour, second;
+	cout << "输入秒数:";
+	cin >> second;
+	day = second / 86400;
+	hour = (second % 86400)/3600;
+	minute = ((second % 86400) % 3600) / 60;
+	second = ((second % 86400) % 3600) % 60;
+	cout << day << "天" << hour << "小时" << minute << "分钟" << second << "秒";
+
+}
+5、
+#include<iostream>
+using namespace std;
+int main()
+{
+	long long int worldpopulation, chinese;
+	double ratio;
+	cout << "Enter the world's population:";
+	cin >> worldpopulation;
+	cout << "Enter the poppulation of chinese :";
+	cin >> chinese;
+	ratio = double(chinese) / double(worldpopulation);
+	cout << "The population of the chinese is" << ratio << "of the world population";
+
+}
